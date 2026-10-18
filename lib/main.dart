@@ -86,8 +86,9 @@ class NextCard extends StatelessWidget {
   const NextCard(this.s, {super.key});
   @override
   Widget build(BuildContext context) {
-    final missing = s.reqs.where((r) => !app.mine.contains(r.key)).toList();
-    final ready = s.reqs.length - missing.length;
+    final core = s.reqs.where((r) => !r.optional).toList();
+    final missing = core.where((r) => !app.mine.contains(r.key)).toList();
+    final ready = core.length - missing.length;
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 20, 16, 0),
       child: Container(
@@ -99,10 +100,10 @@ class NextCard extends StatelessWidget {
           Text(s.title, style: const TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.w800)),
           Text(s.time, style: const TextStyle(color: Color(0xFFD6E0EB), fontSize: 14)),
           const SizedBox(height: 12),
-          if (s.reqs.isNotEmpty) ...[
-            ClipRRect(borderRadius: BorderRadius.circular(6), child: LinearProgressIndicator(value: s.reqs.isEmpty ? 0 : ready / s.reqs.length, minHeight: 8, color: const Color(0xFF3CF5B0), backgroundColor: const Color(0x33FFFFFF))),
+          if (core.isNotEmpty) ...[
+            ClipRRect(borderRadius: BorderRadius.circular(6), child: LinearProgressIndicator(value: ready / core.length, minHeight: 8, color: const Color(0xFF3CF5B0), backgroundColor: const Color(0x33FFFFFF))),
             const SizedBox(height: 8),
-            Text(missing.isEmpty ? 'Listed items checked. This is not an eligibility check.' : '$ready of ${s.reqs.length} ready. Still needed: ${missing.map((r) => r.label).join('; ')}.', style: const TextStyle(color: Colors.white, fontSize: 14, height: 1.4)),
+            Text(missing.isEmpty ? 'Listed items checked. This is not an eligibility check.' : '$ready of ${core.length} ready. Still needed: ${missing.map((r) => r.label).join('; ')}.', style: const TextStyle(color: Colors.white, fontSize: 14, height: 1.4)),
           ] else
             Text(s.summary, style: const TextStyle(color: Colors.white, fontSize: 14, height: 1.4)),
           const SizedBox(height: 14),
