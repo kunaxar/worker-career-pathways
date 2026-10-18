@@ -1,0 +1,13 @@
+name: career_pathways
+description: Career pathways prototype - the real next step in your trade, with the credentials and hours it takes. Fictional worker.
+publish_to: none
+version: 0.1.0
+environment:
+  sdk: ^3.5.0
+dependencies:
+  flutter:
+    sdk: flutter
+  google_fonts: ^6.2.1
+  url_launcher: ^6.3.0
+flutter:
+  uses-material-design: true
