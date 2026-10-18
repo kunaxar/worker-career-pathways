@@ -71,6 +71,7 @@ class PathTab extends StatelessWidget {
       SizedBox(height: 44, child: ListView(scrollDirection: Axis.horizontal, padding: const EdgeInsets.symmetric(horizontal: 20), children: [
         for (var i = 0; i < trades.length; i++) Padding(padding: const EdgeInsets.only(right: 8), child: Pill('${trades[i].emoji}  ${trades[i].name}', on: app.tradeIdx == i, onTap: () => app.setTrade(i))),
       ])),
+      Padding(padding: const EdgeInsets.fromLTRB(20, 14, 20, 0), child: Container(padding: const EdgeInsets.all(12), decoration: BoxDecoration(color: const Color(0xFFFFF4ED), borderRadius: BorderRadius.circular(12)), child: const Text('Illustrative US ladder. No state chosen, so this is not an exact licensing path. Requirements vary by state, union and employer. Check your state board.', style: TextStyle(fontSize: 12.5, height: 1.4, color: Color(0xFF475467))))),
       Padding(padding: const EdgeInsets.fromLTRB(20, 18, 20, 8), child: const Text('Where I am now', style: TextStyle(fontWeight: FontWeight.w700))),
       Padding(padding: const EdgeInsets.symmetric(horizontal: 20), child: Wrap(spacing: 8, runSpacing: 8, children: [for (var i = 0; i < t.stages.length; i++) Pill(t.stages[i].title, on: cur == i, onTap: () => app.setStage(i))])),
       if (next != null) NextCard(next) else const Padding(padding: EdgeInsets.fromLTRB(20, 20, 20, 0), child: Text('You are at the top step shown for this trade. Pay and licence rules beyond this point depend on your state.', style: TextStyle(color: g600))),
@@ -101,7 +102,7 @@ class NextCard extends StatelessWidget {
           if (s.reqs.isNotEmpty) ...[
             ClipRRect(borderRadius: BorderRadius.circular(6), child: LinearProgressIndicator(value: s.reqs.isEmpty ? 0 : ready / s.reqs.length, minHeight: 8, color: const Color(0xFF3CF5B0), backgroundColor: const Color(0x33FFFFFF))),
             const SizedBox(height: 8),
-            Text(missing.isEmpty ? 'You have everything listed for this step.' : '$ready of ${s.reqs.length} ready. Still needed: ${missing.map((r) => r.label).join('; ')}.', style: const TextStyle(color: Colors.white, fontSize: 14, height: 1.4)),
+            Text(missing.isEmpty ? 'Listed items checked. This is not an eligibility check.' : '$ready of ${s.reqs.length} ready. Still needed: ${missing.map((r) => r.label).join('; ')}.', style: const TextStyle(color: Colors.white, fontSize: 14, height: 1.4)),
           ] else
             Text(s.summary, style: const TextStyle(color: Colors.white, fontSize: 14, height: 1.4)),
           const SizedBox(height: 14),
@@ -247,7 +248,7 @@ class PayTab extends StatelessWidget {
           ]),
         )),
       ],
-      const Text('Read this as: the early years sit near the left of the bar, experienced licensed workers toward the right. That is a reading of the range, not a figure BLS publishes per step.', style: TextStyle(color: g500, fontSize: 12, height: 1.4)),
+      const Text('Each bar is the spread of pay for the whole trade. It does not predict pay at any career stage. Source: BLS Occupational Employment and Wage Statistics, reference period May 2025 (as shown on each BLS Handbook page).', style: TextStyle(color: g500, fontSize: 12, height: 1.4)),
     ]);
   }
 }
