@@ -36184,7 +36184,7 @@ p.push(B.Pf)
 p.push(B.jb)
 p.push(new A.eA("Find a registered apprenticeship (Apprenticeship.gov)",u.F,null))
 q=B.a9[$.hr().a]
-p.push(new A.eA("How to become a "+q.a.toLowerCase()+" (BLS)",q.c,null))
+p.push(new A.eA("BLS: how to become - "+q.d,q.c,null))
 p.push(B.w0)
 p.push(B.Pl)
 return A.DW(p,this.a,B.Au,B.aq)},
