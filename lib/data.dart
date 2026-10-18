@@ -5,6 +5,7 @@ class Req {
   final String key, label, detail;
   final String? url;
   const Req(this.key, this.label, this.detail, [this.url]);
+  bool get optional => label.contains('(optional)');
 }
 
 class Stage {
@@ -49,7 +50,7 @@ const trades = <Trade>[
   Trade('Carpenter', '🪚', 'Carpenters', 'https://www.bls.gov/ooh/construction-and-extraction/carpenters.htm', 40410, 60580, 99910, [
     Stage('Laborer / helper', 'Start here', 'BLS: some carpenters start as construction laborers or helpers. The tasks are similar.', [hsReq, osha10]),
     Stage('Apprentice carpenter', 'Programs differ by region', 'Apprentices learn blueprint reading, math, building code and safety, and complete set hours of training each year.', [apprenticeReq, osha10]),
-    Stage('Journey carpenter', 'After training', 'Do the full range of carpentry. Optional specialty certifications can open more work.', [
+    Stage('Journey carpenter', 'After training', 'Do the full range of carpentry. BLS notes that optional specialty certification programs exist.', [
       Req('spec', 'Specialty certification (optional)', 'BLS: optional programs certify carpenters by specialty. CareerOneStop lists them.', 'https://www.careeronestop.org/Toolkit/Training/find-certifications.aspx'),
     ]),
     Stage('Lead carpenter / supervisor', 'Years on the job', 'BLS lists first-line supervisor and lead carpenter as advancement paths.', [osha30]),
