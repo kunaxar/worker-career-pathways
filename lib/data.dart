@@ -26,9 +26,9 @@ const osha = 'https://www.osha.gov/training/outreach';
 const oshaTrainers = 'https://www.osha.gov/training/outreach';
 const nccerElectrical = 'https://www.nccer.org/craft-catalog/electrical/';
 
-const hsReq = Req('hs', 'High school diploma or equivalent', 'BLS lists this as the usual entry requirement for all four trades.');
-const osha10 = Req('osha10', 'OSHA 10-hour card', 'Basic safety training. OSHA issues a 10-hour or 30-hour course completion card after the class.', osha);
-const osha30 = Req('osha30', 'OSHA 30-hour card', 'OSHA describes the 30-hour class as more advanced training than the 10-hour.', osha);
+const hsReq = Req('hs', 'High school diploma or equivalent', 'BLS lists this as the typical entry-level education for this trade. Typical, not a rule for every employer or program.');
+const osha10 = Req('osha10', 'OSHA 10-hour card (optional)', 'Basic safety training. OSHA issues a course completion card after the class. It is not a requirement in the sources used here. Some employers, states or projects ask for it, so check the job.', osha);
+const osha30 = Req('osha30', 'OSHA 30-hour card (optional)', 'OSHA describes the 30-hour class as more advanced training than the 10-hour. Not a requirement in the sources used here. Some employers or projects ask for it.', osha);
 const apprenticeReq = Req('apprentice', 'Enrolled in an apprenticeship', 'Paid on-the-job learning plus classroom instruction. Search programs near you.', apprenticeshipFinder);
 const hoursReq = Req('hours', 'About 2,000 on-the-job hours a year', 'BLS Career Outlook: apprentices usually get about 2,000 hours of paid on-the-job training and at least 144 hours of related instruction each year.', 'https://www.bls.gov/careeroutlook/2013/summer/art01.pdf');
 
@@ -69,7 +69,7 @@ const trades = <Trade>[
   ]),
   Trade('Welder', '🔥', 'Welders, Cutters, Solderers, and Brazers', 'https://www.bls.gov/ooh/production/welders-cutters-solderers-and-brazers.htm', 39240, 53750, 77530, [
     Stage('Entry level', 'Start here', 'BLS: a high school diploma plus technical training. Many employers prefer welders who finished a training or credential program. Some apprenticeships take people with no experience.', [hsReq]),
-    Stage('Trained welder', 'Several months of on-the-job training', 'Even with school training you still get several months of on-the-job training. OSHA requires electrical safety training for welders.', [
+    Stage('Trained welder', 'Several months of on-the-job training', 'Even with school training you still get several months of on-the-job training.', [
       Req('school', 'Welding training program (vocational school, community college or apprenticeship)', 'BLS lists these routes. The U.S. Armed Forces also offer welding training.'),
       osha10,
     ]),
