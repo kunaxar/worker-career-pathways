@@ -127,7 +127,7 @@ void showPlan(BuildContext context, Stage s) => showModalBottomSheet(
           const Text('Where to start', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16)),
           const SizedBox(height: 6),
           LinkRow('Find a registered apprenticeship (Apprenticeship.gov)', apprenticeshipFinder),
-          LinkRow('How to become a ${app.trade.name.toLowerCase()} (BLS)', app.trade.blsUrl),
+          LinkRow('BLS: how to become - ${app.trade.blsName}', app.trade.blsUrl),
           const SizedBox(height: 10),
           const Text('Demo: nothing is booked or enrolled from here. These open public websites.', style: TextStyle(color: g500, fontSize: 12)),
         ])),
